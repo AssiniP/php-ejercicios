@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>EJECICIO 4</title>
+    <title>EJERCICIO 4</title>
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 </html>

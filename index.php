@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>EJECICIOS EN PHP</title>
+    <title>EJERCICIOS EN PHP</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <!--
