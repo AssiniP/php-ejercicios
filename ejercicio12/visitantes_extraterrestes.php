@@ -65,23 +65,36 @@
             </ul>
             </li>';
     echo $navigation;
-    $form = '<form action="visitantes_extraterrestes.php" method="post">
-    <label for="nombre" required>Pone tu nombre!</label>
-    <input type="text" name="nombre" id="nombre">
-    <label for="planeta">De qué planeta sos?</label>
-    <select name="planeta">
-        <option value="mercurio">Mercurio</option>
-        <option value="venus">Venus</option>
-        <option value="la tierra">La tierra</option>
-        <option value="marte">Marte</option>
-        <option value="jupiter">Jupiter</option>
-        <option value="saturno">Saturno</option>
-        <option value="urano">Urano</option>
-        <option value="neptuno">Neptuno</option>
-        <option value="pluton">Pluton</option>
-    </select>
-    <input type="submit" value="Registrarme">
-    </form>';
-    echo $form;
+    $archivo = "extraterrestes.json";
+    if($_POST && $_POST['planeta']){
+        $visitante = array("nombre" => $_POST['nombre'], "planeta" => $_POST['planeta']);
+        if(file_exists($archivo)){
+            $datos = file_get_contents($archivo);
+            $visitas= json_decode($datos);
+            array_push($visitas, $visitante);
+            $json = json_encode($visitas);
+            file_put_contents($archivo, $json);
+        }else{
+            $array = array();
+            array_push($array, $visitante);
+            $json = json_encode($array);
+            file_put_contents($archivo, $json);
+        }
+    }
+
+    $visitas = file_get_contents($archivo);
+    $array = json_decode($visitas, true);
+    $extraterrestes = 0;
+    echo "<div>";
+    foreach ($array as $visita){
+        echo "<p>Nos visito " . $visita['nombre'] . " del planeta " . $visita['planeta'] . "!</p> </br>";
+        if($visita['planeta'] != 'la tierra'){
+            $extraterrestes++;
+        }
+    }
+    echo "<p> Hay " . $extraterrestes . " visitantes extraterrestres </p>";
+    echo "</div>";
+
     include_once ("../footer.html");
+
 ?>
