@@ -6,7 +6,7 @@
             echo "malio sal";
         }
         $imgSource = "../" . $imagen;
-        $texto = "?><html><h2>$filename</h2><img src='$imgSource'></br></html>";
+        $texto = "?><html><h2>$filename</h2><img src='$imgSource'></html>";
         $fin = '<?php include_once("../../footer.html");';
         fwrite($pagina, $texto);
         fwrite($pagina, $fin);

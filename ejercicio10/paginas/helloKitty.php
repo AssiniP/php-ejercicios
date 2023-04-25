@@ -64,4 +64,4 @@
                 <a href="../../ejercicio20/ejercicio20.php" class="nav-link">Ejercicio 20</a>
             </ul>
             </li>';
-    echo $navigation;?><html><h2>helloKitty</h2><img src='../imagenes/helloKitty.png'></br></html><?php include_once("../../footer.html");
+    echo $navigation;?><html><h2>helloKitty</h2><img src='../imagenes/helloKitty.png'></html><?php include_once("../../footer.html");

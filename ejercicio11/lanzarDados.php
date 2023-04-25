@@ -65,16 +65,18 @@
             </ul>
             </li>';
     echo $navigation;
-    $form = '<div class="content"><form action="lanzarDados.php" method="post">
-    <label for="dados">Elegi la cantidad de dados a tirar</label>
-    <select name="dados" id="dados">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-    </select>
-    <input type="submit" value="Tirar">
-    </form> </div>';
-    echo $form;
+    $eleccion = $_POST['dados'];
+    $dados = array();
+    $sumatoria = 0;
+    for($i = 0; $i < $eleccion; $i++){
+        $dados[$i] = mt_rand(1,6);
+        $sumatoria += $dados[$i];
+    }
+    echo "<div class='content'>";
+    foreach ($dados as $dado){
+        echo '<img src="dados/dado' . $dado . '.png"/>';
+    }
+    echo "</div>";
+    echo "<p>El resultado es ". $sumatoria . "</p>";
     include_once ("../footer.html");
 ?>
