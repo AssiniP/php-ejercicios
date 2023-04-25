@@ -10,7 +10,7 @@
     $navigation = '
             <li class="navigation">
             <ul class="nav-child">
-                <a href="ejercicio1.php" class="nav-link">Ejercicio 1</a>
+                <a href="../../ejercicio1.php" class="nav-link">Ejercicio 1</a>
             </ul>
             <ul class="nav-child">
                 <a href="../ejercicio2/ejercicio2.php" class="nav-link">Ejercicio 2</a>
@@ -34,7 +34,7 @@
                 <a href="../ejercicio10/ejercicio10.php" class="nav-link">Ejercicio 10</a>
             </ul>
             <ul class="nav-child">
-                <a href="../ejercicio11/ejercicio11.php" class="nav-link">Ejercicio 11</a>
+                <a href="ejercicio11.php" class="nav-link">Ejercicio 11</a>
             </ul>
             <ul class="nav-child">
                 <a href="../ejercicio12/ejercicio12.php" class="nav-link">Ejercicio 12</a>
