@@ -65,6 +65,7 @@
             </ul>
             </li>';
     echo $navigation;
+
     $directorio ="imagenes/";
     $imagenes = glob($directorio . "*.[JjPpWw][PpNnEe][GgBb][Pp]");
     $imagenes2 = glob($directorio . "*.[JjPpWw][PpNnEe][Gg]");

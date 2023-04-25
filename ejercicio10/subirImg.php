@@ -1,6 +1,6 @@
 <?php
     if(!isset($_POST["nombre_img"]) || !isset($_POST["imagen_user"])){
-        header("Location: ejercicio9.php");
+        header("Location: ejercicio10.php");
     }
 
     $directorio = "imagenes/";
@@ -10,8 +10,9 @@
     $direccion = $directorio . $nombre . "." . $imagenTipo;
     var_dump($direccion);
     if(move_uploaded_file($_FILES['imagen_user']['tmp_name'], $direccion)){
-        header("Location: ejercicio9.php");
+        header("Location: ejercicio10.php");
     }else{
         die();
     };
+
 ?>
