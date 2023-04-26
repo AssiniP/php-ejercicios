@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>EJERCICIO 13</title>
+    <title>EJERCICIO 14</title>
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 </html>
@@ -10,7 +10,7 @@
     $navigation = '
             <li class="navigation">
             <ul class="nav-child">
-                <a href="../ejercicio1/ejercicio1.php" class="nav-link">Ejercicio 1</a>
+                <a href="ejercicio1.php" class="nav-link">Ejercicio 1</a>
             </ul>
             <ul class="nav-child">
                 <a href="../ejercicio2/ejercicio2.php" class="nav-link">Ejercicio 2</a>
@@ -40,7 +40,7 @@
                 <a href="../ejercicio12/ejercicio12.php" class="nav-link">Ejercicio 12</a>
             </ul>
             <ul class="nav-child">
-                <a href="ejercicio13.php" class="nav-link">Ejercicio 13</a>
+                <a href="../ejercicio13/ejercicio13.php" class="nav-link">Ejercicio 13</a>
             </ul>
             <ul class="nav-child">
                 <a href="../ejercicio14/ejercicio14.php" class="nav-link">Ejercicio 14</a>
@@ -65,37 +65,43 @@
             </ul>
             </li>';
     echo $navigation;
-    $form = '<form method="post" action="ejercicio13.php">
-        <input type="checkbox" name="entrada[]" id="doritos">
-        <label for="doritos">Snacks</label>
-        <input type="checkbox" name="plato_principal[]" id="milanesa">
-        <label for="milanesa">Milanesa</label>
-        <input type="checkbox" name="acompaniamiento[]" id="papas">
-        <label for="papas">Papas fritas</label>
-        <input type="checkbox" name="postre[]" id="helado">
-        <label for="helado">Helado</label>
-        <input type="submit" value="enviar">
-        </form>';
-    echo $form;
-    if(isset($_POST)){
-        echo "<p>El usuario eligio comer:</p><br>";
-        $menu = parse_ini_file("menu.ini");
-        if(isset($_POST['entrada'])){
-            echo "<p>De entrada:</p>";
-            echo "<p>". $menu['entrada'] . "</p>";
+
+    if(isset($_POST['dimension'])){
+        $dimension = $_POST['dimension'];
+        $matriz = array();
+        for($i = 0; $i < $dimension; $i++){
+            $matriz[$i] = array();
+            for($j = 0; $j< $dimension; $j++){
+                $matriz[$i][$j] = $i * $dimension + $j + 1;
+            }
         }
-        if (isset($_POST['plato_principal'])){
-            echo "<p>De plato principal:</p>";
-            echo "<p>". $menu['plato_principal'] . "</p>";
+
+    echo "<p>La matriz cuadrada de " . $dimension . ":</p>";
+    echo "<table>";
+    for($i = 0; $i < $dimension; $i++){
+        echo "<tr>";
+        for($j = 0; $j < $dimension; $j++){
+            echo "<td>". $matriz[$i][$j] . "</td>";
         }
-        if(isset($_POST['acompaniamiento'])){
-            echo "<p>De acompañamiento:</p>";
-            echo "<p>". $menu['acompaniamiento'] . "</p>";
+        echo "</tr>";
+    }
+    echo "</table>";
+    echo "<h2>Diagonal principal</h2>";
+    for($i = 0; $i < $dimension; $i++){
+        echo $matriz[$i][$i] . ", ";
+    }
+
+    echo "<h2>Diagonal secundaria</h2>";
+    for($i= 0; $i < $dimension; $i++){
+        echo $matriz[$i][$dimension-$i-1] . ", ";
+    }
+    $suma = 0;
+    for($i = 0; $i < $dimension; $i++){
+        for($j = 0; $j < $dimension; $j++){
+            $suma += $matriz[$i][$j];
         }
-        if(isset($_POST['postre'])){
-            echo "<p>De postre:</p>";
-            echo "<p>". $menu['postre'] . "</p>";
-        }
+    }
+    echo "<h2>Sumatoria total</h2></br> <p>La suma es " . $suma . "</p>";
     }
     include_once ("../footer.html");
 ?>
