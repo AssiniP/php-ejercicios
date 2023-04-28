@@ -66,20 +66,17 @@ $navigation = '
             </li>';
 echo $navigation;
 
-$form = '<form action="jugar.php" method="post">
+include_once("JugadasFactory.php");
+include_once ("jugadas/Papel.php");
+include_once ("jugadas/Tijera.php");
+include_once ("jugadas/Piedra.php");
 
-<label for="nombreJugador1">Nombre del jugador 1</label>
-<input type="text" name="nombreJugador1" id="nombreJugador1" required>
-<label for="jugada">Jugada del jugador 1</label>
-<input type="text" name="jugada" id="jugada" required> </br>
-
-<label for="nombreJugador2">Nombre del jugador 2</label>
-<input type="text" name="nombreJugador2" id="nombreJugador2" required>
-<label for="jugada2">Jugada del jugador 2</label>
-<input type="text" name="jugada2" id="jugada2" required> </br>
-<input type="submit" value="jugar">
-</form>';
-echo $form;
+if(!empty($_POST)){
+    $jugadas = new JugadasFactory();
+    $jugador1 = $jugadas->crear($_POST['jugada'], $_POST['nombreJugador1']);
+    $jugador2 = $jugadas->crear($_POST['jugada2'], $_POST['nombreJugador2']);
+    echo $jugador1->competirContra($jugador2);
+}
 
 include_once ("../footer.html");
 ?>
